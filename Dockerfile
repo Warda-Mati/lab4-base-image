@@ -5,12 +5,11 @@
 # Set the base image to Ubuntu
 FROM ubuntu:latest
 # File Author / Maintainer
-MAINTAINER MBasel  Magableh
 Label org.label-schema.group="monitoring"
 # Update the sources list
 RUN apt-get update
 # Install Python and Basic Python Tools
-RUN apt-get install -y python3 python3-pip mysql-client libmysqlclient-dev
+RUN apt-get install -y python3 python3-pip
 #copy app.py into /app folder 
 ADD /myapp /myapp
 
@@ -22,7 +21,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install -r myapp/requirements.txt
 # Expose ports
 RUN pip3 install Flask
-EXPOSE 5000 8000
+EXPOSE 5000
 #EXPOSE 8000
 # Set the default directory where CMD will execute
 WORKDIR /myapp
